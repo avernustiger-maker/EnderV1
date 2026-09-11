@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.107'
+}
+version=project.mod_version
+group=project.mod_group_id
+repositories { mavenCentral() }
+neoForge {
+    version="${project.neo_version}"
+    runs { client { client() }; server { server() } }
+    mods { ender_v1 { sourceSet sourceSets.main } }
+}
+sourceSets.main.resources.srcDir 'src/main/generated'
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8' }
